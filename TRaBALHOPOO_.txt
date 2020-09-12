@@ -1,0 +1,236 @@
+using System.Collections.Generic;
+using System.Linq;
+using Model;
+using DTO;
+using System;
+namespace DTO
+{
+  public class Gravadora
+{
+  private int_idGravadora {get; set;}
+  private int_idCD {get; set;}
+  private int_idMusica {get; set;}
+  priavate string nome {get;set}
+  private string nomeAutor {get;set}
+  }
+
+}
+
+CREATE DATABASE bd_Gravadora;
+USE bd_Gravadora;
+CREATE  TABLE TBL_Gravadora(
+  idGravadora INT  AUTO_INCREMENT PRIMARY KEY ,
+  Gravadora VARCHAR(150) NULL DEFAULT NULL
+);
+
+<!DOCTYPE HTML>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <title>Seu Site</title>
+    </head>
+<body>
+    <form id="newPost" method="post" action="insere.php" >
+        <label class="label" for="tituloPost">Categoria:</label>
+        <input type="text" name="tituloPost" id="tituloPost" ></input><br/>
+        <input class="br-publicar" type="submit" value="Criar" /> 
+    </form>
+</body>
+</html>
+
+<input type="text" name="tituloPost" id="tituloPost" ></input>
+<input class="br-publicar" type="submit" value="Enviar" />
+
+
+<?php
+    //inicia a conexão com o banco de dados setando(colocando) valores dentro das variáveis
+    $servidor = "localhost";//nome do servidor, como é local sempre é localhost
+    $username = "root";//nome de usuário do banco de dados root é padrão
+    $password = "";//senha para acessar o banco de dados
+    $database = "TestePost";//nome do banco de dados que vc criou
+     
+    //faz a connection  
+    $connection = mysql_connect($servidor, $username, $password); //gera a conexão passando os dados das var criadas
+    if (!$connection) {  
+       die('Not connected : ' . mysql_error());//caso não consiga conectar ao banco de dados emite msg de erro
+    }
+    //seleciona o banco de dados existente no servidor definido acima   
+    @mysql_select_db($database) or die(mysql_error());
+    //aki é onde é selecionado o banco de dados desejado, caso não consiga emite msg de erro com o mysql_error();
+     
+    mysql_set_charset('utf8');//bom ter para evitar problemas com acentos
+     
+?>
+
+$TesteVar = $_POST['tituloPost'];
+
+//VERIFICAMOS AS LINHAS AFETADAS PELA CONSULTA, ou seja, se deu certo
+   $row   =  mysql_num_rows($sql);  
+   //limpa o resultado para liberar memória
+   mysql_free_result($sql);
+   //VERIFICAMO SE RETORNOU ALGO maior que zero
+    
+   if($row == 0){
+       //se não retornou nada imprimimos um msg dizendo que não houve alteração
+       echo "Não foi inserido nenhum registro!!!";
+       mysql_close($connection);//fecha conexão sempre
+   }else{
+       //se maior que zero é que houve mudança na tabela e exibe msg de sucesso
+       echo "Dados inseridos com sucesso!!!";
+       mysql_close($connection);//fecha conexão sempre
+   }
+
+
+public function Cadastrar(){
+    if(parent::getPDO() == null){
+           //caso ainda não tenha conectado conecta-se com o banco de dados
+           parent::conectar();
+    }
+    //preparação para a query com os metodos pdo
+    $stmt = $this->pdo->prepare('INSERT INTO Teste(descricaoPost)VALUES(:pdescricaoPost)');
+    $stmt->bindValue(':pdescricaoPost ', $this->tituloPost, PDO::PARAM_STR);
+ 
+    If($stmt->execute())
+      parent::desconectar();
+      return true;
+   }else{
+      parent::desconectar();
+      return false;
+  }
+}
+
+namespace BLL
+{
+public class GravadoraBll
+{
+  Acesso_MySQL dal = null;
+ 
+public GravadoraBLL() {    }
+
+public DataTable TBL_Gravadora()
+{
+  TBL_Gravadora = new TBL_Gravadora();
+  try
+  {
+     dal = new Acesso_MySQL();
+     tb = dal. TBL_Gravadora("select * from TBL_Gravadora");
+  }
+
+
+public DataTable TBL_CD()
+{
+  TBL_CD = new TBL_CD();
+  try
+  {
+     dal = new Acesso_MySQL();
+     tb = dal. TBL_CD("select * from TBL_CD");
+  }
+
+
+public DataTable TBL_Musica()
+{
+  TBL_Musica = new TBL_Musica();
+  try
+  {
+     dal = new Acesso_MySQL();
+     tb = dal. TBL_Musica("select * from TBL_Musica");
+  }
+
+  catch (Expection ex)
+  { throw ex;
+  }
+
+return tb;
+
+}
+
+
+public void inserirGravadora(Gravadora g)
+{
+  varchar nome = g.nome.Tostring.Replace(',' '.')  
+
+dal= new Acesso_MySQL();
+dal.abreconexao();
+dal.ExecutarComandoSql (string.Format("insert into TBL_Gravadora
+values('{1}','{2}','{3}')", EMI, TESTE, SONY));
+}
+
+public void inserirMusica(Gravadora g)
+{
+  varchar nome = g.nome.Tostring.Replace(',' '.')
+  varchar nomeAutor = g.nomeAutor.Tostring.Replace(',' '.')
+
+dal= new Acesso_MySQL();
+dal.abreconexao();
+dal.ExecutarComandoSql (string.Format("insert into TBL_Musica
+values('{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}')", g.Musica 1, g.Musica 2, g.Musica 3, g.Musica 4, g.Cantor A, g.Cantor B, g.Cantor B, g.Cantor B));
+}
+
+public void inserirCd(Gravadora g)
+{
+  varchar nomeCD = g.nomeCD.Tostring.Replace(',' '.')
+  double precoVenda = g.precoVenda.Tostring.Replace(',' '.')
+  date dtLancamento = g.dtLancamento.Tostring.Replace(',' '.')
+
+dal= new Acesso_MySQL();
+dal.abreconexao();
+dal.ExecutarComandoSql (string.Format("insert into TBL_CD
+values('{0}','{1}', '{2}','{3}','{4}','{5}')", Sgt. Pepper s Lonely Hearts Club Band, 70.00, 1967/05/26, Teste de CD, 45.00,1990/03/07));
+}
+
+  
+DROP DATABASE bd_Gravadora;
+
+CREATE DATABASE bd_Gravadora;
+
+use bd_Gravadora;
+
+CREATE TABLE TBL_Gravadora( 
+  idGravadora INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(50) NOT NULL,
+  PRIMARY KEY(idGravadora)
+);
+
+CREATE TABLE TBL_CD(
+  idCD INT NOT NULL AUTO_INCREMENT,
+  nomeCD VARCHAR(50) NOT NULL,
+  precoVenda DOUBLE NOT NULL,
+  dtLancamento DATE NOT NULL,
+  PRIMARY KEY(idCD)
+);
+
+CREATE TABLE TBL_Musica(
+  idMusica INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(50) NOT NULL,
+  nomeAutor VARCHAR(50),
+  idGravadora INT NOT NULL,
+  idCD INT NOT NULL,
+  PRIMARY KEY(idMusica),
+  FOREIGN KEY(idGravadora) REFERENCES TBL_Autor(idGravadora),
+  FOREIGN KEY(idCD) REFERENCES TBL_CD(idCD)
+);
+
+
+INSERT INTO TBL_Gravadora VALUES(NULL, 'EMI');
+INSERT INTO TBL_Gravadora VALUES(NULL, 'TESTE');
+INSERT INTO TBL_Gravadora VALUES(NULL, 'SONY');
+
+INSERT INTO TBL_CD VALUES(NULL, 'Sgt. Pepper s Lonely Hearts Club Band', 70.00, '1967/05/26');
+INSERT INTO TBL_CD VALUES(NULL, 'Teste de CD', 45.00, '1990/03/07');
+
+
+INSERT INTO TBL_Musica VALUES(NULL, 'Sgt. Pepper s Lonely Hearts Club Band', 'Paul McCartney', 1, 1);
+INSERT INTO TBL_Musica VALUES(NULL, 'With a Little Help from My Friends', 'Paul McCartney', 1, 1);
+INSERT INTO TBL_Musica VALUES(NULL, 'Lucy in the Sky with Diamonds', 'John Lennon', 1, 1);
+INSERT INTO TBL_Musica VALUES(NULL, 'Fixing a Hole', 'Paul McCartney', 1, 1);
+INSERT INTO TBL_Musica VALUES(NULL, 'She is Leaving Home','Paul McCartney', 1, 1);
+INSERT INTO TBL_Musica VALUES(NULL, 'Being for the Benefit of Mr. Kite!', 'John Lennon', 1, 1);
+INSERT INTO TBL_Musica VALUES(NULL, 'When I am Sixty-Four','Paul McCartney', 1, 1);
+INSERT INTO TBL_Musica VALUES(NULL, 'Lovely Rita','Paul McCartney', 1, 1);
+INSERT INTO TBL_Musica VALUES(NULL, 'Good Morning Good Morning', 'John Lennon', 1, 1);
+INSERT INTO TBL_Musica VALUES(NULL, 'Within You Without You','George Harrison', 1, 1);
+INSERT INTO TBL_Musica VALUES(NULL, 'A Day in the life', 'Lennon e McCartney', 1, 1);
+INSERT INTO TBL_Musica VALUES(NULL, 'Musica 1', 'Cantor A', 2, 2);
+INSERT INTO TBL_Musica VALUES(NULL, 'Musica 2', 'Cantor B', 2, 2);
+INSERT INTO TBL_Musica VALUES(NULL, 'Musica 3', 'Cantor B', 2, 2);
+INSERT INTO TBL_Musica VALUES(NULL, 'Musica 4', 'Cantor B', 3, 2);
